@@ -49,9 +49,9 @@
 
     public class Steak
     {
-        private readonly int percentOfSteakLeft;
-
         private bool isCooked;
+
+        private int percentOfSteakLeft;
 
         public Steak()
         {
@@ -73,6 +73,8 @@
             {
                 throw new NoSteakLeftException();
             }
+
+            percentOfSteakLeft = 0;
         }
     }
 
