@@ -4,8 +4,11 @@
 
     public class Human
     {
-        public void EatFood(string food)
+        public void EatFood()
         {
+            // We've coupled ourselves to the Console implementation
+            string food = Console.ReadLine();
+
             // We are newing classes here too!
             if (food == "orange")
             {
