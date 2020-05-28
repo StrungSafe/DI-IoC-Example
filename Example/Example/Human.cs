@@ -4,85 +4,25 @@
 
     public class Human
     {
-        public void EatFood()
+        public void EatFood(string food)
         {
-            var orange = new Orange();
-            orange.Peel();
-            orange.Eat();
-
-            var steak = new Steak();
-            steak.Cook();
-            steak.Eat();
-        }
-    }
-
-    public class Orange
-    {
-        private bool isPeeled;
-
-        private int percentOfOrangeLeft;
-
-        public Orange()
-        {
-            isPeeled = false;
-            percentOfOrangeLeft = 100;
-        }
-
-        public void Eat()
-        {
-            if (percentOfOrangeLeft == 0)
+            // We are newing classes here too!
+            if (food == "orange")
             {
-                throw new NoOrangeLeftException();
+                var orange = new Orange();
+                orange.Peel();
+                orange.Eat();
             }
-
-            percentOfOrangeLeft = 0;
-        }
-
-        public void Peel()
-        {
-            if (!isPeeled)
+            else if (food == "steak")
             {
-                isPeeled = true;
+                var steak = new Steak();
+                steak.Cook();
+                steak.Eat();
+            }
+            else
+            {
+                throw new Exception("I don't know how to eat " + food);
             }
         }
-    }
-
-    public class Steak
-    {
-        private bool isCooked;
-
-        private int percentOfSteakLeft;
-
-        public Steak()
-        {
-            isCooked = false;
-            percentOfSteakLeft = 100;
-        }
-
-        public void Cook()
-        {
-            if (!isCooked)
-            {
-                isCooked = true;
-            }
-        }
-
-        public void Eat()
-        {
-            if (percentOfSteakLeft == 0)
-            {
-                throw new NoSteakLeftException();
-            }
-
-            percentOfSteakLeft = 0;
-        }
-    }
-
-    public class NoOrangeLeftException : Exception
-    {
-    }
-
-    public class NoSteakLeftException : Exception
-    {
     }
 }
