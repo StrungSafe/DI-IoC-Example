@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Example.DI.Food;
+
     public class Program
     {
         public static void Main(string[] args)
@@ -11,7 +13,7 @@
                 // We have decoupled the human class from Console
                 // Now a human can work with vary input types much easier
                 Console.WriteLine("I'm hungry, what do we have to eat? ");
-                string input = Console.ReadLine();
+                string input = Console.ReadLine()?.ToLower();
 
                 IFood food;
 
@@ -27,6 +29,10 @@
                 else if (input == "steak")
                 {
                     food = new Steak();
+                }
+                else if (input == "apple")
+                {
+                    food = new Apple();
                 }
                 else
                 {
