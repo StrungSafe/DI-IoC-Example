@@ -1,4 +1,4 @@
-﻿namespace Example
+﻿namespace Example.Food
 {
     using System;
 

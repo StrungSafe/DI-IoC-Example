@@ -1,4 +1,4 @@
-﻿namespace Example.DI
+﻿namespace Example.DI.Food
 {
     public class Orange : IFood
     {

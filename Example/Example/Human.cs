@@ -2,6 +2,8 @@
 {
     using System;
 
+    using Example.Food;
+
     public class Human
     {
         public void EatFood()
