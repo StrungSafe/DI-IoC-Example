@@ -3,9 +3,9 @@
     using System;
 
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
-    public class FoodNameAttribute : Attribute
+    public class NameAttribute : Attribute
     {
-        public FoodNameAttribute(string name)
+        public NameAttribute(string name)
         {
             Name = name;
         }

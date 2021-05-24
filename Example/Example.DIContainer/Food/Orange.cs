@@ -1,5 +1,6 @@
 ﻿namespace Example.DIContainer.Food
 {
+    [Name("tangerine")]
     public class Orange : IFood
     {
         private bool isPeeled;

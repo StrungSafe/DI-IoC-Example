@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Reflection;
 
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
@@ -24,7 +25,13 @@
             IEnumerable<IFood> foodServices = provider.GetServices<IFood>();
 
             IFood food = foodServices.First(service =>
-                service.GetType().Name.Equals(input, StringComparison.InvariantCultureIgnoreCase));
+            {
+                IEnumerable<NameAttribute> attributes = service.GetType().GetCustomAttributes(typeof (NameAttribute))
+                                                               .OfType<NameAttribute>();
+                return service.GetType().Name.Equals(input, StringComparison.InvariantCultureIgnoreCase)
+                       || attributes.Any(attribute =>
+                           attribute.Name.Equals(input, StringComparison.InvariantCultureIgnoreCase));
+            });
 
             logger.LogDebug("The type of food human is eating is {food}", food.GetType().Name);
 
