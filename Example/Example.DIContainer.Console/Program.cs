@@ -1,7 +1,5 @@
 ﻿namespace Example.DIContainer.Console
 {
-    using System;
-
     using Example.DIContainer.Food;
 
     using Microsoft.Extensions.DependencyInjection;
@@ -11,28 +9,17 @@
     {
         public static void Main(string[] args)
         {
-            IHost host = Host.CreateDefaultBuilder().ConfigureServices((context, service) =>
+            IHost host = Host.CreateDefaultBuilder(args).ConfigureServices((context, service) =>
             {
-                service.AddSingleton<Human>()
-                       .AddTransient<IFoodFactory, FoodFactory>()
-                       .AddTransient<IFood, Apple>()
-                       .AddTransient<IFood, Orange>()
-                       .AddTransient<IFood, Steak>();
+                service.AddSingleton<Human>().AddTransient<IFoodFactory, FoodFactory>().AddTransient<IFood, Apple>()
+                       .AddTransient<IFood, Orange>().AddTransient<IFood, Steak>();
+
+                service.AddSingleton<IIOService, ConsoleIOProvider>();
+
+                service.AddTransient<FeedHumans>();
             }).Build();
 
-            var human = host.Services.GetRequiredService<Human>();
-            var foodFactory = host.Services.GetRequiredService<IFoodFactory>();
-
-            try
-            {
-                Console.Write("What type of food? ");
-                string input = Console.ReadLine();
-                human.EatFood(foodFactory.NewFood(input));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex);
-            }
+            host.Services.GetRequiredService<FeedHumans>().Eat();
         }
     }
 }
