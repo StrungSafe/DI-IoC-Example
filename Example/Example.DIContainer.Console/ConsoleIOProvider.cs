@@ -1,4 +1,4 @@
-﻿namespace Example.DIContainer
+﻿namespace Example.DIContainer.Console
 {
     using System;
 

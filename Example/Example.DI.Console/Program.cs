@@ -1,8 +1,7 @@
 ﻿namespace Example.DI.Console
 {
     using System;
-
-    using Example.DI.Food;
+    using Food;
 
     public class Program
     {

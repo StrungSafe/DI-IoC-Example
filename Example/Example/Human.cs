@@ -1,8 +1,7 @@
 ﻿namespace Example
 {
     using System;
-
-    using Example.Food;
+    using Food;
 
     public class Human
     {
@@ -34,15 +33,16 @@
             // For every type of food, we would need to now touch two classes as well as more code branches which grows the complexity further
             // Coding to abstractions (interfaces) and inverting control will make these classes easier to manage and evolve
             //
-            //else if (food == "apple pie")
-            //{
-            //    var pie = new ApplePie();
-            //    pie.Warm();
-            //    pie.Eat();
-            //}
+            else if (food == "apple pie")
+            {
+                var pie = new ApplePie();
+                pie.Warm();
+                pie.Eat();
+            }
             else
             {
-                throw new Exception("I don't know how to eat " + food);
+                Console.WriteLine("I don't know how to eat " + food);
+                return;
             }
 
             Console.WriteLine("Thanks, that was good");

@@ -1,7 +1,6 @@
 ﻿namespace Example.DIContainer.Console
 {
-    using Example.DIContainer.Food;
-
+    using Food;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
 
@@ -11,12 +10,14 @@
         {
             IHost host = Host.CreateDefaultBuilder(args).ConfigureServices((context, service) =>
             {
-                service.AddSingleton<Human>().AddTransient<IFoodFactory, FoodFactory>().AddTransient<IFood, Apple>()
-                       .AddTransient<IFood, Orange>().AddTransient<IFood, Steak>();
+                service.AddSingleton<Human>()
+                       .AddTransient<IFoodFactory, FoodFactory>()
+                       .AddTransient<IFood, Apple>()
+                       .AddTransient<IFood, Orange>()
+                       .AddTransient<IFood, Steak>();
 
-                service.AddSingleton<IIOService, ConsoleIOProvider>();
-
-                service.AddTransient<FeedHumans>();
+                service.AddSingleton<IIOService, ConsoleIOProvider>()
+                       .AddTransient<FeedHumans>();
             }).Build();
 
             host.Services.GetRequiredService<FeedHumans>().Eat();

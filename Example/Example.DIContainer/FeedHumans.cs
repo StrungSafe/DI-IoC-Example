@@ -1,7 +1,6 @@
 ﻿namespace Example.DIContainer
 {
     using System;
-
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Logging;
 
@@ -25,7 +24,7 @@
             var human = provider.GetRequiredService<Human>();
             var foodFactory = provider.GetRequiredService<IFoodFactory>();
 
-            var input = string.Empty;
+            string input = string.Empty;
 
             while (true)
             {
@@ -40,7 +39,7 @@
                 {
                     logger.LogError($"There was a problem eating {input}", ex);
                 }
-                
+
                 ioService.Write("Continue eating? ");
                 string eatMore = ioService.Read();
                 if (eatMore?.Equals("n", StringComparison.InvariantCultureIgnoreCase) ?? false)
