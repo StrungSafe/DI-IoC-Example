@@ -2,9 +2,9 @@
 {
     public class Orange : IFood
     {
-        private bool isPeeled;
+        private static bool isPeeled;
 
-        private int percentOfOrangeLeft;
+        private static int percentOfOrangeLeft;
 
         public Orange()
         {

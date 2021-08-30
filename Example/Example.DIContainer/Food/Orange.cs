@@ -20,6 +20,11 @@
                 throw new NoFoodLeftException();
             }
 
+            if (!isPeeled)
+            {
+                throw new FoodNotReadyException();
+            }
+
             percentOfOrangeLeft = 0;
         }
 

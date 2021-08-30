@@ -7,6 +7,10 @@
     {
         public static void Main(string[] args)
         {
+            // All of our classes are newed here
+            var human = new Human();
+            IFood food;
+
             while (true)
             {
                 // We have decoupled the human class from Console
@@ -14,15 +18,11 @@
                 Console.WriteLine("I'm hungry, what do we have to eat? ");
                 string input = Console.ReadLine()?.ToLower();
 
-                IFood food;
-
-                // All of our classes are newed here
-                var human = new Human();
-
                 // We can further abstract this logic (and getting the input too) further to allow for flexibility
                 // DI frameworks will help to select the proper class
                 if (input == "orange")
                 {
+                    // although we new this, the implementation makes this act like a singleton
                     food = new Orange();
                 }
                 else if (input == "steak")

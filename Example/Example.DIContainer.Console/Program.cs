@@ -13,8 +13,10 @@
                 service.AddSingleton<Human>()
                        .AddTransient<IFoodFactory, FoodFactory>()
                        .AddTransient<IFood, Apple>()
-                       .AddTransient<IFood, Orange>()
-                       .AddTransient<IFood, Steak>();
+                       .AddTransient<IFood, Steak>()
+                       .AddTransient<IFood, IceCream>()
+                       // oranges can only be eaten once because only a single instance will created by the container
+                       .AddSingleton<IFood, Orange>();
 
                 service.AddSingleton<IIOService, ConsoleIOProvider>()
                        .AddTransient<FeedHumans>();

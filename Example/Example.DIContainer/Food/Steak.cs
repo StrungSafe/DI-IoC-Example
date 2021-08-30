@@ -2,9 +2,9 @@
 {
     public class Steak : IFood
     {
-        private readonly int percentOfSteakLeft;
-
         private bool isCooked;
+
+        private int percentOfSteakLeft;
 
         public Steak()
         {
@@ -18,6 +18,13 @@
             {
                 throw new NoFoodLeftException();
             }
+
+            if (!isCooked)
+            {
+                throw new FoodNotReadyException();
+            }
+
+            percentOfSteakLeft = 0;
         }
 
         public void Prepare()
